@@ -4,7 +4,8 @@ PennController.ResetPrefix(null);
 // Preamble
 
 // sequence
-PennController.Sequence( "instructions1", "info1", randomize("items") );
+//PennController.Sequence( "instructions1", "info1", shuffle(randomize("critical"), randomize("filler")) );
+PennController.Sequence( "instructions1", "info1", randomize("items"));
 
 
 // --------------------------------------------------------------------------------------------------------------
@@ -36,7 +37,7 @@ PennController( "info1" ,
 
 PennController.Template( PennController.GetTable("subset.csv"), // use subset.csv
                  variable => PennController("items",
-        newText("sentence1",variable.Bio) // present biography in whole
+        newText("sentence1",variable.bio) // present biography in whole
             .settings.css("font-size", "30px")
             .print()
         ,
@@ -144,7 +145,12 @@ PennController.Template( PennController.GetTable("subset.csv"), // use subset.cs
            .remove()
  ,
         getKey("bio").settings.log("all"),
-        getKey("critical").settings.log("all"),
+        getKey("critPro").settings.log("all"),
+        getKey("critVerb").settings.log("all"),
+        getKey("critAdj").settings.log("all"),
+        getKey("critObjNP").settings.log("all"),         
+        getKey("critTime").settings.log("all"),  
+        getKey("critSpillover").settings.log("all"),  
         getScale("rating").settings.log("all"),
 )
                                             
